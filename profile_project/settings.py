@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'profiles_api',
+    
 ]
+# hi name is ayash
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
