@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'profiles_api',
     
 ]
-# hi name is ayash
+# hi name is yashashree
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
