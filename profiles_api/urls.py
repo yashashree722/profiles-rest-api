@@ -5,11 +5,11 @@ from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
-router.register('profile' ,views.UserProfileViewset )
+router.register('profile',views.UserProfileViewset)
+router.register('feed',views.UserProfileFeedViewset,basename= 'FeedApis')
 
 urlpatterns = [
   # path('hello-view/' ,views.HelloApiView.as_view()),
   path('login/' , views.UserLoginApiView.as_view()),
-  
   path('' , include(router.urls)),
 ]

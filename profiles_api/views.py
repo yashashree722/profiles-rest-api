@@ -6,7 +6,8 @@ from profiles_api import models
 from profiles_api import serializers
 # from profiles_api.serializers import  UserProfileSerializer
 from profiles_api import permissions
-from profiles_api.permissions import UpdateOwnProfile
+from profiles_api.permissions import UpdateOwnProfile,UpdateOwnstatus
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from rest_framework.authtoken.views  import ObtainAuthToken
@@ -29,4 +30,15 @@ class UserLoginApiView(ObtainAuthToken):
     
     
 
-# 
+class UserProfileFeedViewset(viewsets.ModelViewSet):
+    authentication_classes = (TokenAuthentication,)
+    
+    serializer_class = serializers.ProfileFeedItemSerializer
+    queryset  = models.ProfileFeedItem.objects.all()
+    permission_classes = (UpdateOwnstatus,IsAuthenticated)
+    
+    
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        serializer.save(user_profile=self.request.user) 
+    
